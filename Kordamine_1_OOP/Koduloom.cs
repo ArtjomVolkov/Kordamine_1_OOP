@@ -22,11 +22,11 @@ namespace Kordamine_1_OOP
 
         }
 
-        public Koduloom(string nimi="---", string varv="---", char sugu='-', double kaal=0.0, int vanus=0, bool elav=false)
+        public Koduloom(string nimi="---", string varv="---", sugu loomaSugu=0, double kaal=0.0, int vanus=0, bool elav=false)
         {
             this.nimi = nimi;
             this.varv = varv;
-            this.sugu = sugu;
+            this.loomaSugu = loomaSugu;
             this.kaal = kaal;
             this.vanus = vanus;
             this.elav = elav;
@@ -35,7 +35,7 @@ namespace Kordamine_1_OOP
         {
             this.nimi = loom.nimi;
             this.varv = loom.varv;
-            this.sugu = loom.sugu;
+            this.loomaSugu = loom.loomaSugu;
             this.kaal = loom.kaal;
             this.vanus = loom.vanus;
             this.elav = loom.elav;
