@@ -9,7 +9,7 @@ namespace Kordamine_1_OOP
     class Kodukass : Koduloom
     {
         public string toug;//tõug - порода
-        public Kodukass(string toug,string nimi, string varv, sugu loomaSugu, double kaal, int vanus, bool elav) :base(nimi,varv,loomaSugu,kaal,vanus,elav)
+        public Kodukass(string toug, sugu loomaSugu,string nimi, string varv, double kaal, int vanus, bool elav) :base(loomaSugu,nimi, varv,kaal,vanus,elav)
         {
             this.toug = toug;
         }
@@ -25,7 +25,7 @@ namespace Kordamine_1_OOP
             {
                 elav_text = "Surnud";
             }
-            Console.WriteLine("{0} tõug,{1} {2} {3} ta on {4} ja tema kaal on {5} ja ta on {6} aastat vana.",toug, elav_text, varv, nimi, loomaSugu, kaal, vanus);
+            Console.WriteLine("{0} tõug,{1} {2} {3} ta on {4} ja tema kaal on {5} ja ta on {6} aastat vana.", loomaSugu, toug, elav_text, varv, nimi, kaal, vanus);
         }
     }
 }

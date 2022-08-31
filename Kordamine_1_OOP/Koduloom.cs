@@ -11,7 +11,7 @@ namespace Kordamine_1_OOP
         public string nimi;
         public string varv;
         public enum sugu { isane,emane};
-        private sugu loomaSugu;
+        public sugu loomaSugu;
         //public char sugu;
         public double kaal;
         public int vanus; 
@@ -22,7 +22,7 @@ namespace Kordamine_1_OOP
 
         }
 
-        public Koduloom(string nimi="---", string varv="---", sugu loomaSugu=0, double kaal=0.0, int vanus=0, bool elav=false)
+        public Koduloom(sugu loomaSugu,string nimi="---", string varv="---", double kaal=0.0, int vanus=0, bool elav=false)
         {
             this.nimi = nimi;
             this.varv = varv;
