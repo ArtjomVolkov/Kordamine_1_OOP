@@ -38,7 +38,7 @@ namespace Kordamine_1_OOP
         {
             nimi = uusNimi;
         }
-        abstract void arvutaSissetulek()
+        public void arvutaSissetulek()
         {
             double k;
         }
