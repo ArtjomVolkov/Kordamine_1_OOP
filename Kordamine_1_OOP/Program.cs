@@ -9,17 +9,58 @@ kass.print_Info();*/
 
 
 using Kordamine_1_OOP;
+using System.Numerics;
 
-/*Isik inimene = new Isik("Artjom", 2005, Isik.Sugu.isane, 174);
+Isik inimene = new Isik("Pipidoy", 2005, Isik.Sugu.isane, 174);
 inimene.print_Info();
 inimene.arvitaVanus();
-inimene.Piikus();*/
-/*Tootaja toot = new Tootaja(Isik.Sugu.emane,"TTHK","Holo","Joas","Artjom",2004,558,700,180);
+inimene.Piikus();
+Console.WriteLine("\n\n");
+
+Tootaja toot = new Tootaja(Isik.Sugu.emane,"TTHK","Holo","Joas","Artjom",2004,558,700,180);
 toot.print_Info();
 toot.arvitaVanus();
-toot.Piikus();*/
-Kutsekooliopilane opi = new Kutsekooliopilane(Isik.Sugu.emane, "Iki", "TAR", "1", 60, "Artjom", 2004, 500, 800, 170);
+toot.Piikus();
+Console.WriteLine("\n\n");
+
+Kutsekooliopilane opi = new Kutsekooliopilane(Isik.Sugu.isane,"TTHk","TRA","3",500,"Jelena",2004,500,700,180,800,"Tallinn",200,1,4.6);
 opi.print_Info();
 opi.arvitaVanus();
 opi.Piikus();
 opi.Toetus();
+opi.Toetus1();
+Console.WriteLine("\n\n");
+
+Opilane opin = new Opilane(Isik.Sugu.isane, "TTHK", "TARpv21", "Tarkvaraarendaja", "Mark", 2004, 175);
+opin.print_Info();
+opin.arvitaVanus();
+opin.Piikus();
+Console.WriteLine("\n\n");
+
+List<Isik> Inimesed = new List<Isik>();
+Inimesed.Add(inimene);
+Inimesed.Add(toot);
+Inimesed.Add(opi);
+Inimesed.Add(opin);
+StreamWriter to_file = new StreamWriter(@"C:\Users\opilane\source\repos\Kordamine_1_OOP\Kordamine_1_OOP\People.txt", false);
+foreach (Isik x in Inimesed)
+{
+    to_file.WriteLine(x.nimi + "," + x.arvitaVanus() + "," + x.inimeneSugu + ";");
+}
+to_file.Close();
+StreamReader from_file = new StreamReader(@"C:\Users\opilane\source\repos\Kordamine_1_OOP\Kordamine_1_OOP\People.txt");
+string text = from_file.ReadToEnd();
+Console.WriteLine(text);
+from_file.Close();
+
+string path = "C:\\Users\\opilane\\source\\repos\\Kordamine_1_OOP\\Kordamine_1_OOP\\Peoples.txt";
+using (StreamReader reader = new StreamReader(path))
+{
+    string texts = await reader.ReadToEndAsync();
+    Console.WriteLine(texts);
+}
+
+StreamReader sr = new StreamReader("C:\\Users\\opilane\\source\\repos\\Kordamine_1_OOP\\Kordamine_1_OOP\\Peoples.txt");
+List<string> lines = new List<string>();
+int n = sr.ReadToEnd().Split(new char[] {'\n'}).Length;
+Console.WriteLine("---------" + n + "---------");

@@ -1,0 +1,4 @@
+Pipidoy,122,isane;
+Artjom,68,emane;
+Jelena,14,isane;
+Mark,138,isane;

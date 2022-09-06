@@ -37,6 +37,13 @@ namespace Kordamine_1_OOP
             this.palk = palk;
         }
 
+        public Isik(Sugu inimeneSugu, string nimi, int synniAasta)
+        {
+            this.inimeneSugu = inimeneSugu;
+            this.nimi = nimi;
+            this.synniAasta = synniAasta;
+        }
+
         public void print_Info()
         {
             Console.WriteLine($"Sinu nimi on {nimi}. Sa oled {synniAasta} aastat vana. Sinu sugu {inimeneSugu}. Pikkus - {pikkus1}");
