@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kordamine_1_OOP
 {
-    public class Isik
+    abstract class Isik
     {
         public string nimi;
         public int synniAasta;
