@@ -1,0 +1,3 @@
+Artjom,18,emane;
+Jelena,18,isane;
+Mark,18,isane;
