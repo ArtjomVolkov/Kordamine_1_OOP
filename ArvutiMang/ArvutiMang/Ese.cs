@@ -1,32 +1,24 @@
-﻿using System;
+﻿using ArvutiMang;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ArvutiMang
 {
-    class Ese : Entity
+    internal class Ese : Entity
     {
-        int punktideArv;
+        int puntkideArv;
         string nimetus;
 
-        public Ese(int punktideArv, string nimetus)
+        public Ese(int puntkideArv, string nimetus)
         {
-            this.punktideArv = punktideArv;
+            this.puntkideArv = puntkideArv;
             this.nimetus = nimetus;
         }
 
-        public int PunktideArv()
-        {
-            return punktideArv;
-        }
-
-        public string Nimetus()
-        {
-            return nimetus;
-        }
+        public int PuntkideArv() { return puntkideArv; }
+        public string Info() { return nimetus; }
     }
 }

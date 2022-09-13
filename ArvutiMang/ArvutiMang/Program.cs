@@ -1,4 +1,5 @@
 ﻿using ArvutiMang;
-using System.Numerics;
+using System.Text;
 
-Ese inim = new Ese(50, "Noob");
+Console.OutputEncoding = Encoding.UTF8;
+Peaklass.Mang();
