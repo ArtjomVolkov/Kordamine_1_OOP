@@ -13,7 +13,7 @@ namespace ArvutiMang
         public static List<Ese> LoeEsemed()
         {
             List<Ese> list = new List<Ese>();
-            StreamReader sr = new StreamReader(@"C:\Users\opilane\source\repos\mang_kontrolltoo\mang_kontrolltoo\items.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\ASUS\source\repos\Kordamine_1_OOP\ArvutiMang\ArvutiMang\items.txt");
             while (!sr.EndOfStream)
             {
                 string[] info = sr.ReadLine().Split(";");
@@ -92,7 +92,9 @@ namespace ArvutiMang
             Tegelane win = mang.SuurimaPunktideArvuga();
             Console.WriteLine(win.Info());
             Console.WriteLine("Игрок имел следующие предметы:");
+            Console.WriteLine("-------------------------------");
             win.väljastaEsemed();
+            Console.WriteLine("-------------------------------");
 
         }
 
@@ -118,6 +120,7 @@ namespace ArvutiMang
                     }
                     else
                     {
+                        Console.WriteLine("Goodbye! My friend");
                         Environment.Exit(0);
                     }
                 }

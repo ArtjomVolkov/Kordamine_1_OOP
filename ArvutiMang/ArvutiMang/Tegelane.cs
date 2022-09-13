@@ -30,7 +30,7 @@ namespace ArvutiMang
 
         public string Info()
         {
-            return $"Игрок {this.nimi}. Информация:\n" +
+            return $"Игрок {nimi}. Информация:\n" +
                 $"---------------------------\n" +
                 $"Количество вещей: {items.Count}\n" +
                 $"Количество пунктов: {PuntkideArv()}\n" +
