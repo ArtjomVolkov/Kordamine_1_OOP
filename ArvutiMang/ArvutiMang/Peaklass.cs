@@ -1,24 +1,26 @@
 ﻿using ArvutiMang;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ArvutiMang
 {
-    internal static class Peaklass
+    internal static class Peaklass //Peaklass peab olema nimega Peaklass.
     {
-        public static Random rnd = new Random();
-        public static List<Ese> LoeEsemed()
+        public static Random rnd = new Random(); //Random
+        public static List<Ese> LoeEsemed() //Rakendatakse vastavat staatilist meetodit, et lugeda failist esemed.txt esemete andmed.
         {
             List<Ese> list = new List<Ese>();
-            StreamReader sr = new StreamReader(@"C:\Users\ASUS\source\repos\Kordamine_1_OOP\ArvutiMang\ArvutiMang\items.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\opilane\source\repos\Volkov TARpv21\Kordamine_1_OOP\ArvutiMang\ArvutiMang\items.txt");
             while (!sr.EndOfStream)
             {
                 string[] info = sr.ReadLine().Split(";");
-                Ese item = new Ese(stringToInt(info[1]), info[0]);
-                list.Add(item);
+                Ese ese = new Ese(stringToInt(info[1]), info[0]);
+                list.Add(ese);
             }
             return list;
         }
@@ -33,7 +35,7 @@ namespace ArvutiMang
             return total;
         }
 
-        public static void Shuffle<T>(this IList<T> list)
+        public static void Shuffle<T>(this IList<T> list) //Iga tegelase jaoks genereeritakse juhuslik arv n vahemikust [2,10], mis näitab selle tegelase esemete arvu.Iga tegelase jaoks valitakse juhuslikult n eset.Selleks tuleb kasutadaGollections.shuffle meetodit.Antud meetod võtab argumendiks listi ning järjestab sellesuvalises järjekorras. Esemete list järjestada iga tegelase jaoks uuesti ümber ning lisada tegelaseleesimest n eset.
         {
             int n = list.Count;
             while (n > 1)
@@ -46,10 +48,10 @@ namespace ArvutiMang
             }
         }
 
-        static string getName()
+        static string getName() 
         {
-            string[] names = { "Biba", "Boba", "Denis", "Artjom", "Aleksandr", "Vlad", "Danil", "Timofei", "German", "Miha", "Edgard" };
-            return names[rnd.Next(names.Length)];
+            string[] nimed = { "Biba", "Boba", "Denis", "Artjom", "Aleksandr", "Vlad", "Danil", "Timofei", "German", "Miha", "Edgard" }; //Luuakse vähemalt 5 tegelast (nimed mõelge ise välja)
+            return nimed[rnd.Next(nimed.Length)];
         }
 
         static Tegelane[] populatePlayers(int plrCount)
@@ -65,14 +67,14 @@ namespace ArvutiMang
             return giveOutItems(plrs);
         }
 
-        static Tegelane[] giveOutItems(Tegelane[] plrs)
+        static Tegelane[] giveOutItems(Tegelane[] plrs) 
         {
             List<Ese> itemList = LoeEsemed();
             if (itemList.Count <= 0) throw new ArgumentOutOfRangeException();
             foreach (Tegelane plr in plrs)
             {
                 Shuffle(itemList);
-                int amount = rnd.Next(2, 10);
+                int amount = rnd.Next(2, 10); //Iga tegelase jaoks genereeritakse juhuslik arv n vahemikust [2,10]
                 for (int i = 0; i < amount; i++)
                 {
                     plr.Equip(itemList[i]);
@@ -81,13 +83,13 @@ namespace ArvutiMang
             return plrs;
         }
 
-        static public void PlayGame(int plrCount)
+        static public void PlayGame(int plrCount) //Tegelaste info ja esemed väljastatakse ekraanile (kasutades vastavaid meetodeid).
         {
             Tegelane[] plrs = populatePlayers(plrCount);
             Mang mang = new Mang(plrs);
             foreach (Tegelane winner in mang.SuurimaEsemeteArvuga())
             {
-                Console.WriteLine(winner.Info());
+                Console.WriteLine(winner.Info());//Leitakse ja väljastatakse ekraanile suurima esemete arvuga tegelase info (kasutades vastavaid meetodeid).
             }
             Tegelane win = mang.SuurimaPunktideArvuga();
             Console.WriteLine(win.Info());
@@ -98,7 +100,7 @@ namespace ArvutiMang
 
         }
 
-        public static void Mang()
+        public static void Mang() //Algab mäng
         {
             Console.WriteLine("Хотите сыграть в игру? Y/N");
             string yesorno = Console.ReadLine();

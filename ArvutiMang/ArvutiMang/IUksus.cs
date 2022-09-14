@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArvutiMang
 {
-    internal interface Entity
+    internal interface IUksus
     {
         int PuntkideArv();
         string Info();
