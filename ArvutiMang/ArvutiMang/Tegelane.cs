@@ -22,12 +22,12 @@ namespace ArvutiMang
         public int CompareTo(Tegelane? other) //7. Klass Tegelane realiseerib liidese Comparable<Tegelane>, kusjuures compareTo meetod realiseeritakse nii, et võrdlemine toimub esemete arvu alusel.
         {
             if (other == null) return 1;
-            return this.esed.Count - other.ItemCount();
+            return this.esed.Count - other.EseCount();
         }
 
         public void Equip(Ese ese) { esed.Add(ese); } //Äsjaloodud tegelasel ei ole ühtegi eset. Eseme lisamiseks peab olema meetod lisaEse, mis jätab argumendiks antud eseme meelde.
 
-        public int ItemCount() { return esed.Count; }
+        public int EseCount() { return esed.Count; }
 
         public string Info() //Meetod info tagastab tegelase info tekstina, näidates tegelase nime, esemete arvu ja punktide arvu.
         {

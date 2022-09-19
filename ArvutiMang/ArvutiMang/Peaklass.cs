@@ -15,7 +15,7 @@ namespace ArvutiMang
         public static List<Ese> LoeEsemed() //Rakendatakse vastavat staatilist meetodit, et lugeda failist esemed.txt esemete andmed.
         {
             List<Ese> list = new List<Ese>();
-            StreamReader sr = new StreamReader(@"C:\Users\opilane\source\repos\Volkov TARpv21\Kordamine_1_OOP\ArvutiMang\ArvutiMang\items.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\ASUS\source\repos\Kordamine_1_OOP\ArvutiMang\ArvutiMang\items.txt");
             while (!sr.EndOfStream)
             {
                 string[] info = sr.ReadLine().Split(";");
@@ -48,54 +48,54 @@ namespace ArvutiMang
             }
         }
 
-        static string getName() 
+        static string getNime() 
         {
             string[] nimed = { "Biba", "Boba", "Denis", "Artjom", "Aleksandr", "Vlad", "Danil", "Timofei", "German", "Miha", "Edgard" }; //Luuakse vähemalt 5 tegelast (nimed mõelge ise välja)
             return nimed[rnd.Next(nimed.Length)];
         }
 
-        static Tegelane[] populatePlayers(int plrCount)
+        static Tegelane[] populatemagijat(int plrCount)
         {
             if (plrCount < 4) throw new Exception();
             Tegelane[] plrs = new Tegelane[plrCount];
             for (int i = 0; i < plrCount; i++)
             {
-                Tegelane plr = new Tegelane(getName());
+                Tegelane plr = new Tegelane(getNime());
                 plrs[i] = plr;
             }
 
-            return giveOutItems(plrs);
+            return annab_ese(plrs);
         }
 
-        static Tegelane[] giveOutItems(Tegelane[] plrs) 
+        static Tegelane[] annab_ese(Tegelane[] plrs) 
         {
-            List<Ese> itemList = LoeEsemed();
-            if (itemList.Count <= 0) throw new ArgumentOutOfRangeException();
+            List<Ese> eeseList = LoeEsemed();
+            if (eeseList.Count <= 0) throw new ArgumentOutOfRangeException();
             foreach (Tegelane plr in plrs)
             {
-                Shuffle(itemList);
-                int amount = rnd.Next(2, 10); //Iga tegelase jaoks genereeritakse juhuslik arv n vahemikust [2,10]
-                for (int i = 0; i < amount; i++)
+                Shuffle(eeseList);
+                int summa = rnd.Next(2, 10); //Iga tegelase jaoks genereeritakse juhuslik arv n vahemikust [2,10]
+                for (int i = 0; i < summa; i++)
                 {
-                    plr.Equip(itemList[i]);
+                    plr.Equip(eeseList[i]);
                 }
             }
             return plrs;
         }
 
-        static public void PlayGame(int plrCount) //Tegelaste info ja esemed väljastatakse ekraanile (kasutades vastavaid meetodeid).
+        static public void Mang1(int plrCount) //Tegelaste info ja esemed väljastatakse ekraanile (kasutades vastavaid meetodeid).
         {
-            Tegelane[] plrs = populatePlayers(plrCount);
+            Tegelane[] plrs = populatemagijat(plrCount);
             Mang mang = new Mang(plrs);
-            foreach (Tegelane winner in mang.SuurimaEsemeteArvuga())
+            foreach (Tegelane voitja1 in mang.SuurimaEsemeteArvuga())
             {
-                Console.WriteLine(winner.Info());//Leitakse ja väljastatakse ekraanile suurima esemete arvuga tegelase info (kasutades vastavaid meetodeid).
+                Console.WriteLine(voitja1.Info());//Leitakse ja väljastatakse ekraanile suurima esemete arvuga tegelase info (kasutades vastavaid meetodeid).
             }
-            Tegelane win = mang.SuurimaPunktideArvuga();
-            Console.WriteLine(win.Info());
+            Tegelane voita = mang.SuurimaPunktideArvuga();
+            Console.WriteLine(voita.Info());
             Console.WriteLine("Игрок имел следующие предметы:");
             Console.WriteLine("-------------------------------");
-            win.väljastaEsemed();
+            voita.väljastaEsemed();
             Console.WriteLine("-------------------------------");
 
         }
@@ -103,20 +103,20 @@ namespace ArvutiMang
         public static void Mang() //Algab mäng
         {
             Console.WriteLine("Хотите сыграть в игру? Y/N");
-            string yesorno = Console.ReadLine();
-            if (yesorno == "Y")
+            string jaei = Console.ReadLine();
+            if (jaei == "Y")
             {
                 Console.WriteLine("\n");
-                Peaklass.PlayGame(8);
+                Peaklass.Mang1(8);
                 Console.WriteLine("Хотите еще сыграть? Y/N");
-                string yesorno1 = Console.ReadLine();
-                while (yesorno1 == "Y")
+                string jaei1 = Console.ReadLine();
+                while (jaei1 == "Y")
                 {
                     Console.WriteLine("\n");
-                    Peaklass.PlayGame(8);
+                    Peaklass.Mang1(8);
                     Console.WriteLine("Ещё раз? Y/N");
-                    string yesorno2 = Console.ReadLine();
-                    if (yesorno2 == "Y")
+                    string jaei2 = Console.ReadLine();
+                    if (jaei2 == "Y")
                     {
 
                     }
